@@ -17,7 +17,7 @@ rocket_y = (HEIGHT/2)
 rocket_pos = (rocket_x,rocket_y)
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
-keys = [False,False,False,False]
+keys = [False,False,False,False,False,False]
 
 
 rocket_x = (WIDTH/2.4)
@@ -36,14 +36,21 @@ while rocket_y < HEIGHT:
             pygame.quit()
 
         if event.type == pygame.KEYDOWN:
-            if event.type == K_UP:
+            if event.key == K_w:
                 keys[0] = True
-            if event.type == K_LEFT:
-                keys[1] = True        
-            if event.type == K_DOWN:
+            if event.key == K_a:
+                keys[1] = True
+            if event.key == K_s:
                 keys[2] = True  
-            if event.type == K_RIGHT:
+            if event.key == K_d:
                 keys[3] = True      
+            if event.key == K_q:
+                keys[4] = True
+            if event.key == K_e:
+                keys[5] = True
+
+
+
 
 
     if keys[0]:
@@ -51,23 +58,41 @@ while rocket_y < HEIGHT:
             rocket_y -= 7
     elif keys[1]:
         if rocket_x > 0:
-            rocket_y -= 2
+            rocket_x -= 2
     elif keys[2]:
         if rocket_y < 570:
             rocket_y += 4
     elif keys[3]:
         if rocket_x <770:
             rocket_x += 2
+    elif keys[4]:
+        if rocket_x > 0:
+            rocket_x -= 2
+        if rocket_y > 0:
+            rocket_y -= 7
+    elif keys[5]:
+        if rocket_y > 0:
+            rocket_y -= 7
+        if rocket_x <770:
+            rocket_x += 2
+                
+        
+
 
     if event.type == pygame.KEYUP:
-        if event.type == K_UP:
+        if event.key == K_w:
             keys[0] = False
-        if event.type == K_LEFT:
+        if event.key == K_a:
             keys[1] = False        
-        if event.type == K_DOWN:
+        if event.key == K_s:
             keys[2] = False  
-        if event.type == K_RIGHT:
+        if event.key == K_d:
             keys[3] = False
+        if event.key == K_q:
+            keys[4] = False
+        if event.key == K_e:
+            keys[5] = False
+
     rocket_y += 1
     time.sleep(0.15)
     
